@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kendo UI &hearts; Twitter Bootstrap: Responsive demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.common-bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.min.css" />
+        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.bootstrap.min.css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.1.408/js/kendo.all.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.1.408/js/kendo.timezones.min.js"></script>
+
+
+        <script src="theme-chooser.js"></script>
+
+        <link rel="stylesheet" href="styles.css" />
+
+        <!--[if lt IE 9]>
+        <script src="vendor/html5shiv.js"></script>
+        <script src="vendor/respond.min.js"></script>
+        <![endif]-->
+
+        <style type="text/css">
+			*
+			{
+			   font-family:"Open Sans","Open-Sans","Helvetica Neue","BBAlpha Sans","S60 Sans","Arial","sans-serif","Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Segoe UI Symbol";
+			}          
+			html,
+			body,
+			#parent,
+			#grid
+			  {
+				margin: 0;
+				padding: 0;
+				border-width: 0;
+				height:auto;
+				padding-bottom:20px
+				 /* DO NOT USE !important for setting the Grid height! */
+			}  
+			.navbar-fixed-top,
+			.navbar-fixed-bottom {
+			   position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+			.k-block, .k-widget, .k-popup, .k-content, .k-toolbar, .k-dropdown .k-input {
+			color:#63709A;
+			}
+			#return-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgb(0, 0, 0);
+                background: rgba(0, 0, 0, 0.7);
+                width: 30px;
+                height: 30px;
+                display: block;
+                text-decoration: none;
+                -webkit-border-radius: 35px;
+                -moz-border-radius: 35px;
+                border-radius: 35px;
+                display: none;
+                -webkit-transition: all 0.3s linear;
+                -moz-transition: all 0.3s ease;
+                -ms-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+            #return-to-top i {
+                color: #fff;
+                margin: 0;
+                position: relative;
+                left: 6.5px;
+                top: 5px;
+                font-size: 19px;
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;
+                -ms-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+            #return-to-top:hover {
+                background: rgba(0, 0, 0, 0.9);
+            }
+            #return-to-top:hover i {
+                color: #fff;
+                top: 5px;
+            }
+			
+            /*Header & Footer*/
+            #topNavBarStyle{
+                background-color: #2d3e50;
+            }
+
+                /*Band specific*/
+            .navbar-brand {
+                padding: 0px;
+            }
+
+            .navbar-brand>img {
+                margin-left: 15px;
+                height: 100%;
+                padding: 15px;
+                width: auto;
+            }
+                /*Band specific*/
+
+            #secNavBarStyle{
+                background-color: #44506a;
+                margin-top: 50px;
+                border: 1px solid #44506a;
+                border-radius: 0px;
+            }
+
+            #secNavBarStyle .navHeader {
+                margin-top: 15px;
+            }
+
+            #footerStyle{
+                background-color: #2d3e50;
+            }
+
+            #footerStyle .navHeader {
+                margin-top: 15px;
+                margin-left: 15px;
+            }
+			
+			/*main container*/
+			.firstContainerMargin{
+			   margin-top: 120px; 
+			}
+			
+            /*navTab*/
+            .navTabMarginTop{
+                margin-top: 10px; 
+            }
+			
+            /*Panel strip*/
+            /*.stripClass{
+               margin-top: 30px;
+            }*/
+
+            .stripClass .panel, .stripClass .panel-default{
+                border-radius: 0px;
+            }
+
+            .stripClass .table-borderless{
+                word-wrap:break-word; 
+                table-layout: fixed;
+            }
+
+            .stripClass .table-borderless tbody tr td,
+            .stripClass .table-borderless tbody tr th,
+            .stripClass .table-borderless thead tr th,
+            .stripClass .table-borderless thead tr td,
+            .stripClass .table-borderless tfoot tr th,
+            .stripClass .table-borderless tfoot tr td {
+                border: none;
+            }
+            
+            .stripClass td, .stripClass th {
+                border-right: solid 1px #DDDDDD !important; 
+            }
+
+            .stripClass .addData{
+                text-align: center; background-color: #00B4CA; color: white; font-size: 15px;  cursor:pointer         
+            }
+            .stripClass .completedData{
+                text-align: center; background-color: #98CC21; color: white;  font-size: 15px; cursor:not-allowed;opacity:.5           
+            }
+            .stripClass .reopendData{
+                text-align: center; background-color: #F97379 ; color: white; font-size: 18px; cursor:pointer           
+            }
+            .k-widget{
+                border:none !important;
+            }
+            .stripClass .showData{
+                text-align: center; background-color: white; color: #00b4ca;
+            }
+
+            .stripClass .addData .addGlyp, .stripClass .showData .showGlyp{
+                padding-top:12px;                 
+            }
+
+            .stripClass .addData .addGlypInner, .stripClass .showData .showGlypInner{
+                font-size: 15px; padding-top:15px;font-family:"Open Sans","Open-sans","Helvetica Neue","BBAlpha Sans","S60 Sans","Arial","sans-serif","Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Segoe UI Symbol";
+            }
+
+            .stripClass .taskDesc{
+                padding: 20px;
+                vertical-align: middle;
+            }
+
+            .stripClass .detailTd{
+                height:100%; 
+                padding: 0px;
+            }
+            
+            .stripClass .detailTable thead th{
+              font-weight: normal;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: left;
+              color: #1c2438;
+            }
+
+            .stripClass .detailTable{
+                width:100%; 
+                height:100%;
+                word-wrap:break-word;
+                table-layout: fixed; 
+            }
+
+            .stripClass .detailTable th{ 
+                padding: 20px;
+                padding-bottom: 0px;
+            } 
+
+            .stripClass .detailTable td{
+                padding: 20px;
+                padding-top: 0px;
+            }
+            .preload { width:100px;
+				height: 100px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+			}
+            .navbar-inverse {
+				background-color: #44506a ;
+			}
+			.FullName {
+				font-size: 20px;
+				color: #435072;
+			}
+			.k-dropdown-wrap .k-input::-ms-clear {
+				display: none !important;
+			}
+
+			/* CSS for navbar */
+			.nav { margin-bottom: 0;}
+			.navbar-default { border:0px; }
+			.nav > li.dropdown.open { position: static; }
+			.nav > li.dropdown.open .dropdown-menu {
+                /*display:table; */
+                width: 100%; text-align: left; left:0; right:0; border-radius: 0px;
+			}
+			.dropdown-menu>li { display: table-cell; }			
+			.nav-tabs >li > a:hover { background-color: white !important;}
+			.nav-tabs > li > a { border-radius: 0px !important; }
+			.nav-tabs {
+				border: none !important;
+			}
+			.tab-content .active {
+				background-color: white !important;
+				border-top: 0px !important;
+			}
+					
+			.dropdown-toggle{
+				color:white !important;
+			}			
+			.dropdown-toggle:hover, .dropdown-toggle:focus{
+				color: black !important;
+				background-color: #e7e7e7 !important;
+			}			
+			.dropdown-menu{
+				padding:0px !important;
+				/*background-color: red !important;*/
+			}
+			
+			#menuLevel1Id{
+				background-color: #e0e0e0;
+			}
+			
+			#menuLevel2Id li{
+				margin-bottom: 20px;
+			}
+			
+			.level3 { border-right: 1px solid #e7e7e7; }
+			.level3 li {
+				margin-bottom: 5px;
+			}			
+			.level3 ul, .menuLevel3 ul { list-style-type: none; }
+			
+			.menuLevel3 {
+				padding-left: 10px;
+			}
+			
+			#menuLevel3Id li{
+				display: inline-block;
+				margin-right: 50px;
+				margin-bottom: 30px;
+                width: 25%;
+                cursor:pointer;
+			}
+			
+			.full-width-tabs > ul.nav.nav-tabs {
+				display: table;
+				width: 100%;
+				table-layout: fixed;
+			}
+			.full-width-tabs > ul.nav.nav-tabs > li {
+				float: left;
+                width: 13%;
+				display: table-cell;
+			}
+			.full-width-tabs > ul.nav.nav-tabs > li > a {
+				text-align: center;
+                padding-top: 25px;
+                font-size: 20px;
+                height: 75px;
+			}
+			
+			.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+				border: none;
+				background-color: white;
+			}
+		
+			.homeClass span {
+				color:white;
+			}
+
+            #settingsId .dropdown-toggle:hover, #settingsId .dropdown-toggle:focus {
+                background-color: transparent !important;
+            }
+
+            #settingsId .dropdown-menu > li {
+                display: block;
+            }
+
+            /*for Inline Tabs*/
+            .full-width-inline-tabs {
+                white-space: nowrap; /* important */
+                overflow-x: auto;
+                overflow-y: hidden;
+                display: inline-block;
+				width: 1000px;
+				float: left;
+                height: 75px;
+                list-style-type: none; 
+                font-size: 30px; 
+                color: black; 
+			}
+			.full-width-inline-tabs li {
+				display: inline-block;
+                width: 175px;
+                height: 75px;
+                padding-top: 10px;
+                margin-bottom:-17px;
+                border-top-left-radius: 25px;
+                white-space: nowrap; 
+			}
+			.full-width-inline-tabs > li > a {
+				text-align: center;
+                padding-top: 25px;
+                padding-left: 15px;
+                font-size: 20px;
+                height: 75px;
+			}
+
+			
+			
+			/* media-queries for top 3 navbars */
+			@media screen and (max-width: 2560px) and (max-height:1440px){
+				.container {
+					width: 2500px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 75% !important;
+				}
+				#secNav {
+					width: 75% !important;
+				}
+				#menuLevel1Id {
+					width: 75% !important;
+				}
+			}
+			@media screen and (max-width: 1920px) and (max-height:1080px){
+				.container {
+					width: 1800px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+			}
+			@media screen and (max-width: 1366px) and (max-height:768px){
+				.container {
+					width: 1300px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				#searchIdLi input {
+					width: 100px;
+				}
+			}
+			@media screen and (max-width: 1280px) and (max-height:1024px){
+				.container {
+					width: 1800px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+			}
+			@media screen and (max-width: 1280px) and (max-height:960px){
+				.container {
+					width: 1000px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+			}
+			@media screen and (max-width: 1280px) and (max-height:800px){
+				.container {
+					width: 1200px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				.dropdown-menu .tab-content .container > row:nth-child(2) {
+					width: 80%;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				#searchIdLi input {
+					width: 100px;
+				}
+			}
+			@media screen and (max-width: 1280px) and (max-height:768px){
+				.container {
+					width: 1200px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				.dropdown-menu .tab-content .container > row:nth-child(2) {
+					width: 80%;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				#searchIdLi input {
+					width: 100px;
+				}
+			}
+			@media screen and (max-width: 1280px) and (max-height:720px){
+				.container {
+					width: 1200px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				.dropdown-menu .tab-content .container > row:nth-child(2) {
+					width: 80%;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				#searchIdLi input {
+					width: 100px;
+				}
+			}
+			@media screen and (max-width: 1024px) and (max-height:768px){
+				.container {
+					width: 1000px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+			}
+			@media screen and (max-width: 800px) and (max-height:600px){
+				.container {
+					width: 1000px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 100% !important;
+				}
+				#secNav {
+					width: 100% !important;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				#searchIdLi input {
+					width: 90px;
+				}
+			}
+			@media screen and (max-width: 800px) and (max-height:480px){
+				.container {
+					width: 1000px !important;
+				}
+				.full-width-inline-tabs{
+					width: 650px;
+				}
+				#firNav {
+					width: 80% !important;
+				}
+				#secNav {
+					width: 80% !important;
+				}
+				.full-width-inline-tabs {
+					width: 600px;
+				}
+				#menuLevel1Id {
+					width: 100% !important;
+				}
+				.level3 {
+					width: 15% !important;
+				}
+				#searchIdLi input {
+					width: 90px;
+				}
+			}
+
+			.menuLevel1Id li a {
+				height: 75px !important;
+				padding: 10px;
+			}
+        </style>
+    </head>
+    <body>
+    <script type="text/x-kendo-tmpl" id="settingtemplate">
+        <li>
+            <a target="_blank" data-bind="visible:Visibility,text:Caption,attr:{ href:windowHtml }"></a>
+        </li>
+    </script>
+		<div class='navbar navbar-inverse ' id='navbarHeader' role='navigation' style="height:75px; border-radius:0px">
+			<div class="container">
+				<div class='navbar-header' style="margin-left:-30px;" id="firNav">
+					<ul style="list-style-type: none;">
+						<li style="float: left; padding-top:14px;"><img src="images/logo-blue.png" style=''></li>
+						<li  class="dropdown" id="settingsId" style="float: right; padding-top:20px;">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog fa-2x" style="color: white;" aria-hidden="true"></i></a>
+							<ul class="dropdown-menu pull-right" id="settingsList" data-template="settingtemplate" data-bind="source:data">
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="navbar navbar-default" id="secNavBarStyle" style="margin-top: -21px; height:100%;">
+			<div class="container">
+				<ul class="nav navbar-nav" id="secNav">
+					<li style="float: left;" class="homeClass"><a href="#"><span class="glyphicon glyphicon-home" style="font-size: 30px;"></span></a></li>
+					<li style="float: left;" id="inlineTabs">
+						<ul class="full-width-inline-tabs">
+						</ul>
+					</li>
+					<li  style="float: right;" class="dropdown level1">
+						<a href="#" class="dropdown-toggle" style="padding-top: 25px; height: 75px;" data-toggle="dropdown"><span></span>&nbsp;<span>&nbsp;<i style="font-size:20px" class="fa">&#xf0c9;</i></span></a>
+						<ul class="dropdown-menu full-width-tabs level2" role="menu" style="width:100%">
+							<ul class="nav nav-tabs" id="menuLevel1Id"></ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div class="tab-pane active" id="home">
+									<div class="container">
+										<div class="row">
+											<div class="col-xs-12">&nbsp;</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-3 level3">
+												<ul id="menuLevel2Id"></ul>
+											</div>
+											<div class="col-xs-9 menuLevel3">
+												<ul id="menuLevel3Id"></ul>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">&nbsp;</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+        <div class="container stripClass">
+            <div class="panel panel-default">
+                <table class = "table table-borderless"> 
+                    <tr> 
+                        <td colspan="1" class="addData" style="border-radius: 0px; vertical-align: middle;">
+                            <div class="glyphicon glyphicon-plus addGlyp"><br/><div class="addGlypInner">Add Data</div></div> 
+                        </td> 
+                        <td colspan="1" class="showData" style="border-radius: 0px; vertical-align: middle;">
+                            <div class="glyphicon glyphicon-th-list showGlyp"><div class="showGlypInner">Show List</div>
+                        </td>
+                        <td colspan="6" class="taskDesc">Water Consumption</td>
+                        <td colspan="8" class="detailTd">
+                            <table class="detailTable">
+                                <thead>
+                                    <tr>
+                                        <th>Business Units</th>
+                                        <th>Measurement Point</th>
+                                        <th>Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GTO</td>
+                                        <td>Flen, Reman(Building)</td>
+                                        <td>Monthly</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+		<!--Footer-->
+		<nav class="navbar navbar-default navbar-fixed-bottom" id="footerStyle" style="position: absolute; bottom: 0px;>
+			<div class="container">
+				<div class="navbar-header navHeader">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+			</div>
+		</nav>
+
+        <script>
+
+			// ===== For Navbar Menu ===== //
+			var selectedLevel1Menu;
+			var selectedLevel2Menu;
+			var selectedLevel3Menu;
+			var lastLevel2Selected;
+
+			var clickedLevel1Index;
+			var clickedLevel2IndexI;
+			var clickedLevel2IndexJ;
+			var canBreakLoop = false;	
+			
+			var menuTree = {	
+                    Caption: "Data sets",		
+                    Children: [
+                            {
+                                Caption: "Enter1A",		
+                                Children: [
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        },
+                                        {
+                                            Caption: "Main1",
+                                            Children: [
+                                                    {
+                                                        Caption: "Organisation3A"
+                                                    },												
+                                                    {
+                                                        Caption: "Organisation3B"
+                                                    }
+                                            ]
+                                        }
+                                ]
+                            },
+                            {
+                                Caption: "Report1B",		
+                                Children: [
+                                        {
+                                            Caption: "CDPT Report2B",
+                                            Children: [
+                                                    {
+                                                        Caption: "CDP Report3C"
+                                                    },												
+                                                    {
+                                                        Caption: "CDP Report3D"
+                                                    }
+                                            ]
+                                        },									
+                                        {
+                                            Caption: "CDPB Report2C",
+                                            Children: [
+                                                    {
+                                                        Caption: "CDP Report3E"
+                                                    },												
+                                                    {
+                                                        Caption: "CDP Report3F"
+                                                    }
+                                            ]
+                                        }
+                                ]
+                            },
+                    ]
+                };
+			
+			$('.level1 > a span:nth-child(1)').text(menuTree.Caption);
+			getSettings();			
+			navbarBuildUp(menuTree);
+		
+			function getSettings() {
+				var IsAdmin = true;
+
+				var settingMenu = [{ Caption: "Menu role", Visibility: IsAdmin, windowHtml: "./TreeView.html" }];
+				var settingSource = kendo.observable({
+					data: settingMenu,
+					Onclick: function (e) { window.open(e.data.windowHtml); }
+				});
+				kendo.bind($("#settingsList"), settingSource);
+			}
+			
+			function navbarBuildUp(menuTree) {
+				var inlineTabs;
+
+				//to stop closing dropdown on select
+				$('#secNavBarStyle .dropdown .dropdown-menu').on('click.bs.dropdown', function () {
+					return $('.dropdown').one('hide.bs.dropdown', function () {
+						return false;
+					});
+				});
+
+				$('#secNavBarStyle .dropdown').on('shown.bs.dropdown', function () {
+					$("#parent").css("opacity", 0.1);
+				}).on('hidden.bs.dropdown', function () {
+					$("#parent").css("opacity", 1);
+				});
+
+				//get clicked ".level1" li value
+				$('.level1 a').click(function () {
+					selectedLevel1Menu = $(this)[0].innerHTML;	// this will alert data-input value.
+					changemenuLevel1(selectedLevel1Menu);
+					$(".level2 li a:eq(0)").trigger("click");
+					$(".level3 li a:eq(0)").trigger("click");
+					//for Inline tabs
+					/*$('#parent').load("./HtmlPage3.html", function () {
+						alert("Loaded");
+					});*/
+					/*inlineTabs = "<li>" + "<a>" + "Tab1" + "</a>" + "</li>";
+					if (inlineTabs != null && inlineTabs != undefined) {
+						$("#inlineTabs ul").append(inlineTabs);
+						$("#inlineTabs ul li").css("background-color", "white");
+					}*/
+				});
+
+				function changemenuLevel1(value) {
+					var catOptions = "";
+					$("#menuLevel1Id").html(catOptions);
+					for (categoryId in menuTree.Children) {
+						if (catOptions == "") {
+							catOptions += "<li>" + "<a>" + menuTree.Children[categoryId].Caption + "</a>" + "</li>";
+						}
+						else {
+							catOptions += "<li>" + "<a>" + menuTree.Children[categoryId].Caption + "</a>" + "</li>";
+						}
+					}
+					//for search button/
+
+					catOptions += "<li>" + "<input></input><span></span>" + "</li>";
+
+					$("#menuLevel1Id").html(catOptions);
+
+					//for search button
+					$('.level1 li input').attr({ "type": "search", "placeholder": "search", "id": "searchId" }).css({ "color": "black", "border": "none", "background-color": "#e0e0e0" });
+					$('.level1 li span').addClass("fa fa-search").css("padding-left", "0px").attr("id", "searchSpanId");
+					$('.level1 li input').parent().attr("id", "searchIdLi");
+					$('#searchIdLi').css({"margin-right": "30px", "margin-top": "25px", "float": "right"});
+
+					// ===== Search ==== //
+					$("#searchSpanId").on('click', function () {
+						searchEnteredText = $("#searchId")[0].value;
+						findFirstSearch(searchEnteredText);
+					});
+
+					//set "href"
+					//$("#menuLevel1Id li a")[0].href = "#";
+					$('.level1 li a').each(function () {
+						$('.level1 li a').css("color", "black");
+					});
+
+					//populate "menuLevel2" li values
+					$('.level2 li a').each(function () {
+						$('.level2 li a').attr('data-toggle', 'tab');
+						$('.level3 li a').css("color", "black");
+						$('.level2 li a').on('click', function () {
+							selectedLevel2Menu = $(this)[0].innerHTML;	// this will alert data-input value.
+							for (var i = 0, len = menuTree.Children.length; i < len; i++) {
+								clickedLevel1Index = null;
+								if (menuTree.Children[i].Caption == selectedLevel2Menu) {
+									clickedLevel1Index = i;
+									canBreakLoop = true;
+								}
+								if (canBreakLoop == true) {
+									break;
+								}
+							}
+							canBreakLoop = false;
+							changemenuLevel2(clickedLevel1Index);
+						});
+					});
+					//to auto-expand 1st set 
+					$('.level2 li a:eq(0)').trigger("click");
+				}
+
+				function changemenuLevel2(value) {
+					var catOptions = "";
+					$("#menuLevel2Id").html(catOptions);
+
+					if (value != null && value != undefined) {
+						for (categoryId2 in menuTree.Children[value].Children) {
+							catOptions += "<li>" + "<a>" + menuTree.Children[value].Children[categoryId2].Caption + "</a>" + "</li>";
+						}
+
+						$("#menuLevel2Id").html(catOptions);
+						//set "href"
+						//$("#menuLevel2Id li a")[0].href = "#";
+
+						//populate "menuLevel3" li values
+						$('.level3 li a').each(function () {
+							$('.level3 li a').attr('data-toggle', 'tab').css("color", "grey");
+							$('.level3 li a').on('click', function () {
+								if (lastLevel2Selected != null && lastLevel2Selected != undefined) {
+									lastLevel2Selected.css("color", "grey");
+								}
+								selectedLevel3Menu = $(this)[0].innerHTML;	// this will alert data-input value.
+								$(this).css("color", "black");
+								lastLevel2Selected = $(this);
+								for (var i = 0, lenI = menuTree.Children.length; i < lenI; i++) {
+									for (var j = 0, lenJ = menuTree.Children[i].Children.length; j < lenJ; j++) {
+										clickedLevel2IndexI = null;
+										clickedLevel2IndexJ = null;
+										if (menuTree.Children[i].Children[j].Caption == selectedLevel3Menu) {
+											clickedLevel2IndexI = i;
+											clickedLevel2IndexJ = j;
+											canBreakLoop = true;
+										}
+										if (canBreakLoop == true) {
+											break;
+										}
+									}
+									if (canBreakLoop == true) {
+										break;
+									}
+								}
+								canBreakLoop = false;
+								changemenuLevel3(clickedLevel2IndexI, clickedLevel2IndexJ);
+							});
+						});
+						//to auto-expand 1st set 
+						$('.level3 li a:eq(0)').trigger("click");
+					}
+				}
+
+				function changemenuLevel3(value1, value2) {
+					var catOptions = "";
+					$("#menuLevel3Id").html(catOptions);
+
+					if ((value1 != null && value1 != undefined) && (value2 != null && value2 != undefined)) {
+						for (categoryId3 in menuTree.Children[value1].Children[value2].Children) {
+							catOptions += "<li>" + "<a data-obj='" + JSON.stringify(menuTree.Children[value1].Children[value2].Children[categoryId3]) + "'>" + menuTree.Children[value1].Children[value2].Children[categoryId3].Caption + "</a>" + "</li>";
+						}
+						$("#menuLevel3Id").html(catOptions);
+						//set "href"
+						//$("#menuLevel3Id li a")[0].href = "http://www.google.com";
+						$('#menuLevel3Id li a').each(function () {
+							$('#menuLevel3Id li a').css("color", "black");
+						});
+
+						//close the dropdown menu
+						$("#menuLevel3Id li a").click(function () {
+							$(this).closest(".dropdown-menu").prev().dropdown("toggle");
+						});
+					}
+				}
+				// ===== Search ==== //
+				function findFirstSearch(val) {
+					isFromSearch = true;
+					for (var i = 0, lenI = menuTree.Children.length; i < lenI; i++) {
+						searchedLevel1Index = null;
+						if (menuTree.Children[i].Caption == val) {
+							searchedLevel1Index = i;
+							canBreakLoop = true;
+						}
+						if (canBreakLoop == true) {
+							break;
+						}
+					}
+					if (canBreakLoop != true) {
+						for (var i = 0, lenI = menuTree.Children.length; i < lenI; i++) {
+							for (var j = 0, lenJ = menuTree.Children[i].Children.length; j < lenJ; j++) {
+								searchedLevel2IndexI = null;
+								searchedLevel2IndexJ = null;
+								if ((menuTree.Children[i].Children[j].Caption).toLowerCase().indexOf(val.toLowerCase()) >= 0) {
+									//.toLowerCase() - to make case insentive, .indexOf(val) - to search for partial string
+									searchedLevel2IndexI = i;
+									searchedLevel2IndexJ = j;
+									canBreakLoop = true;
+								}
+								if (canBreakLoop == true) {
+									break;
+								}
+							}
+							if (canBreakLoop == true) {
+								break;
+							}
+						}
+						if (canBreakLoop == true) {
+							//isFromSearch = true;
+							//$('.level1 li a:eq('+searchedLevel2IndexI+')').trigger( "click" );
+							$('.level2 li a:eq(' + searchedLevel2IndexI + ')').trigger("click");
+							//$('.level3 li a:eq(0)').trigger( "click" );
+						}
+						//for coloring
+						$('#menuLevel2Id li a').each(function () {
+							$('#menuLevel2Id li a').css("color", "grey");
+						});
+						$('#menuLevel2Id li a:eq(' + searchedLevel2IndexJ + ')').css("color", "black");
+					}
+					if (canBreakLoop != true) {
+						for (var i = 0, lenI = menuTree.Children.length; i < lenI; i++) {
+							for (var j = 0, lenJ = menuTree.Children[i].Children.length; j < lenJ; j++) {
+								for (var k = 0, lenK = menuTree.Children[i].Children[j].Children.length;
+									 k < lenK; k++) {
+									searchedLevel3IndexI = null;
+									searchedLevel3IndexJ = null;
+									searchedLevel3IndexK = null;
+							  
+									if ((menuTree.Children[i].Children[j].Children[k].Caption).toLowerCase().indexOf(val.toLowerCase()) >= 0) {
+										//.toLowerCase() - to make case insentive, .indexOf(val) - to search for partial string
+										searchedLevel3IndexI = i;
+										searchedLevel3IndexJ = j;
+										searchedLevel3IndexK = k;
+									   
+										canBreakLoop = true;
+									}
+									if (canBreakLoop == true) {
+										break;
+									}
+								}
+								if (canBreakLoop == true) {
+									break;
+								}
+							}
+							if (canBreakLoop == true) {
+								break;
+							}
+						}
+						//isFromSearch = true;
+						canBreakLoop = false;
+						//$('.level1 li a:eq('+searchedLevel3IndexI+')').trigger( "click" );
+						$('.level2 li a:eq(' + searchedLevel3IndexI + ')').trigger("click");
+						$('.level3 li a:eq(' + searchedLevel3IndexJ + ')').trigger("click");
+						//for coloring
+						$('#menuLevel3Id li a').each(function () {
+							$('#menuLevel3Id li a').css("color", "grey");
+						});
+						$('#menuLevel3Id li a:eq(' + searchedLevel3IndexK + ')').css("color", "black");
+					}
+					isFromSearch = false;
+				}
+			}
+			
+
+            // ===== Scroll to Top ==== //
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(200);    // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function() {      // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop : 0                       // Scroll to top of body
+                }, 500);
+            });
+
+
+        </script>
+    </body>
+</html>
